@@ -1,4 +1,4 @@
-function getGlobalThis() {
+function getGlobalThis(): any {
   if (typeof globalThis !== 'undefined') return globalThis;
   if (typeof self !== 'undefined') return self;
   if (typeof window !== 'undefined') return window;
@@ -6,4 +6,4 @@ function getGlobalThis() {
   throw new Error('Unable to locate global `this`');
 }
 
-export const globalThis = getGlobalThis();
+export const _globalThis = getGlobalThis();
