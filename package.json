@@ -1,0 +1,26 @@
+{
+  "name": "foxtream",
+  "version": "1.0.0",
+  "description": "",
+  "typings": "./dist/typings/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.mjs",
+  "scripts": {
+    "start": "rollup -c -w",
+    "build": "rollup -c",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "prepublish": "npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^25.1.2",
+    "jest": "^25.1.0",
+    "rollup": "^1.31.0",
+    "rollup-plugin-typescript2": "^0.25.3",
+    "ts-jest": "^25.2.0",
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {}
+}
