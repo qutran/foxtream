@@ -53,8 +53,8 @@ function wrapSubject<T>(subject: T, model: ModelType<any>): Observable<T> {
           : nextSubjectData,
       );
       dispatch(observableSubject);
-      trackers.forEach(middleware =>
-        middleware(model, originalMethod, args, observableSubject),
+      trackers.forEach(tracker =>
+        tracker(model, originalMethod, args, observableSubject),
       );
     };
   }
