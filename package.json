@@ -1,12 +1,6 @@
 {
   "name": "foxtream",
-  "version": "0.0.2",
   "description": "Reactive state management for js applications",
-  "typings": "./dist/typings/index.d.ts",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.mjs",
-  "unpkg": "dist/esm/index.mjs",
-  "license": "MIT",
   "author": "Dmitry Kutran <kutran.dmitry@gmail.com> (https://github.com/qutran)",
   "homepage": "https://github.com/qutran/foxtream",
   "repository": "github:qutran/foxtream",
@@ -18,16 +12,10 @@
     "resource",
     "state"
   ],
-  "scripts": {
-    "start": "rollup -c -w",
-    "build": "rollup -c",
-    "test": "jest",
-    "test:coverage": "jest --coverage",
-    "prepublish": "npm run build"
-  },
   "devDependencies": {
     "@types/jest": "^25.1.2",
     "jest": "^25.1.0",
+    "lerna": "^3.0.4",
     "rollup": "^1.31.0",
     "rollup-plugin-typescript2": "^0.25.3",
     "ts-jest": "^25.2.0",
