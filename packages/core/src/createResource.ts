@@ -1,7 +1,7 @@
 import { readStore, Observable } from './store';
 import { ModelType } from './types';
 
-interface Resource<T> {
+export interface Resource<T> {
   read(): T;
   getValue(): T;
 }

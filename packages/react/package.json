@@ -27,7 +27,17 @@
     "build": "rollup -c",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "prepublish": "npm run build"
+    "prepublishOnly": "npm run build"
   },
-  "gitHead": "2056ecc64b6f2566ab6d1fdd4e14a62dc594f47c"
+  "gitHead": "2056ecc64b6f2566ab6d1fdd4e14a62dc594f47c",
+  "peerDependencies": {
+    "@foxtream/core": "*",
+    "react": "^16.*"
+  },
+  "devDependencies": {
+    "@foxtream/core": "../core",
+    "@types/react": "^16.9.19",
+    "react": "^16.12.0",
+    "rollup-plugin-peer-deps-external": "^2.2.2"
+  }
 }

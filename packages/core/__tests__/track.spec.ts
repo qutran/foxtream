@@ -1,7 +1,7 @@
-import { track, readStore } from '../src';
+import { track, readStore, untrack } from '../src';
 
 describe('track', () => {
-  it('should to track methods calls', () => {
+  it('should to track and untrack methods calls', () => {
     const spy = jest.fn();
 
     function Model(name: string = 'Joe', age: number = 74) {
@@ -33,5 +33,9 @@ describe('track', () => {
     expect(spy.mock.calls[1][3]).toEqual(
       expect.objectContaining({ name: 'Dmitry', age: 24 }),
     );
+
+    untrack(spy);
+    readStore(Model).update({ age: 24 });
+    expect(spy.mock.calls.length).toEqual(2);
   });
 });

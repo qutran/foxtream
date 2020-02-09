@@ -1,4 +1,5 @@
 import typescript from 'rollup-plugin-typescript2';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import pkg from './package.json';
 
 export default {
@@ -8,5 +9,8 @@ export default {
     { file: pkg.module, format: 'es' },
   ],
   watch: { include: 'src/**' },
-  plugins: [typescript({ useTsconfigDeclarationDir: true })],
+  plugins: [
+    peerDepsExternal(),
+    typescript({ useTsconfigDeclarationDir: true }),
+  ],
 };

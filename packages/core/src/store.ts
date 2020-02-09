@@ -1,7 +1,8 @@
 import { raf } from './utils/raf';
 import { ModelType } from './types';
 import { trackers } from './track';
-export { track } from './track';
+export { track, untrack, TrackCallback } from './track';
+export { ModelType };
 
 type Listener<T> = (subject: T) => unknown;
 type Unsubscribe = () => void;
@@ -16,7 +17,7 @@ export interface Observable<T> {
   subscribe(listener: Listener<T>): Unsubscribe;
 }
 
-interface Computed<T> {
+export interface Computed<T> {
   getValue(): T;
   subscribe(listener: Listener<T>): Unsubscribe;
   destroy(): void;
