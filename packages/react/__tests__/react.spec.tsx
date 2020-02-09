@@ -1,4 +1,4 @@
-import { readStore, createResource } from '@foxtream/core';
+import { readStore, createResource, computed } from '@foxtream/core';
 import { renderHook, act } from '@testing-library/react-hooks';
 import { useStore, useComputed, useResource, useTrack } from '../src';
 
@@ -39,11 +39,12 @@ describe('react', () => {
   });
 
   it('should to use computed', async () => {
+    const myComputed = computed(() => {
+      const { age, name } = readStore(model);
+      return `My name is ${name}. I\'m ${age} years old`;
+    });
     const { result, waitForNextUpdate } = renderHook(() =>
-      useComputed(() => {
-        const { age, name } = readStore(model);
-        return `My name is ${name}. I\'m ${age} years old`;
-      }),
+      useComputed(myComputed),
     );
     expect(result.current).toEqual(`My name is Dmitry. I'm 24 years old`);
     await act(async () => {

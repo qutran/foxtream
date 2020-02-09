@@ -25,10 +25,9 @@ export function useStore<T>(model: ModelType<T>) {
   return value;
 }
 
-export function useComputed<T>(fn: () => T, deps = []): T {
-  const instance = useMemo(() => computed(fn), [deps]);
-  const [value, setValue] = useState(() => instance.getValue());
-  useEffect(() => instance.subscribe(setValue), deps);
+export function useComputed<T>(computed: Computed<T>): T {
+  const [value, setValue] = useState(() => computed.getValue());
+  useEffect(() => computed.subscribe(setValue), [computed]);
 
   return value;
 }
