@@ -5,6 +5,9 @@
   "homepage": "https://github.com/qutran/foxtream",
   "repository": "github:qutran/foxtream",
   "bugs": "https://github.com/qutran/foxtream/issues",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "store",
     "reactive",
