@@ -1,6 +1,8 @@
 import { raf } from './utils/raf';
+import { ModelType } from './types';
+import { trackers } from './track';
+export { track } from './track';
 
-export type Type<T> = (...args: any[]) => T;
 type Listener<T> = (subject: T) => unknown;
 type Unsubscribe = () => void;
 type Subscribe<T> = (listener: Listener<T>) => Unsubscribe;
@@ -24,9 +26,9 @@ let isComputed = false;
 let scheduled = false;
 let currentScheduleUpdate = null;
 const subFlow = new Set<Subscribe<any>>();
-const cache = new Map<Type<any>, any>();
+const cache = new Map<ModelType<any>, any>();
 
-function wrapSubject<T>(subject: T): Observable<T> {
+function wrapSubject<T>(subject: T, model: ModelType<any>): Observable<T> {
   const listeners = new Set<Listener<T>>();
   const observableSubject = {
     ...subject,
@@ -51,6 +53,9 @@ function wrapSubject<T>(subject: T): Observable<T> {
           : nextSubjectData,
       );
       dispatch(observableSubject);
+      trackers.forEach(middleware =>
+        middleware(model, originalMethod, args, observableSubject),
+      );
     };
   }
 
@@ -70,17 +75,17 @@ export function initStore<T extends (...args: any[]) => unknown>(
   model: T,
   ...params: Parameters<T>
 ) {
-  cache.set(model, wrapSubject(model(...params)));
+  cache.set(model, wrapSubject(model(...params), model));
 }
 
-export function readStore<T>(model: Type<T>): T & Observable<T> {
+export function readStore<T>(model: ModelType<T>): T & Observable<T> {
   if (!cache.has(model)) initStore(model);
   const fromCache = cache.get(model) as T & Observable<T>;
   if (isComputed) subFlow.add(fromCache.subscribe);
   return fromCache;
 }
 
-export function computed<T>(fn: Type<T>): Computed<ReturnType<typeof fn>> {
+export function computed<T>(fn: ModelType<T>): Computed<ReturnType<typeof fn>> {
   isComputed = true;
   currentScheduleUpdate = scheduleUpdate;
   const listeners = new Set<Listener<T>>();

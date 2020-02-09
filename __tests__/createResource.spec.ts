@@ -1,4 +1,4 @@
-import { createResource, readStore } from '../src';
+import { createResource } from '../src';
 
 function resourceCreator() {
   return {

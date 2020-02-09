@@ -1,4 +1,5 @@
-import { readStore, Observable, Type } from './store';
+import { readStore, Observable } from './store';
+import { ModelType } from './types';
 
 interface Resource<T> {
   read(): T;
@@ -17,7 +18,7 @@ enum STATE {
 }
 
 export function createResource<T, R>(
-  fn: ResourceCreator<R> & Type<T>,
+  fn: ResourceCreator<R> & ModelType<T>,
 ): Resource<R & Omit<T, '$resource'> & Observable<R & Omit<T, '$resource'>>> {
   const { $resource, ...methods } = fn();
   let state: STATE = STATE.initial;
