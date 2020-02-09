@@ -1,0 +1,28 @@
+{
+  "name": "@foxtream/core",
+  "version": "0.1.0",
+  "description": "Reactive state management for js applications",
+  "typings": "./dist/typings/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.mjs",
+  "unpkg": "dist/esm/index.mjs",
+  "license": "MIT",
+  "author": "Dmitry Kutran <kutran.dmitry@gmail.com> (https://github.com/qutran)",
+  "homepage": "https://github.com/qutran/foxtream",
+  "repository": "github:qutran/foxtream",
+  "bugs": "https://github.com/qutran/foxtream/issues",
+  "keywords": [
+    "store",
+    "reactive",
+    "computed",
+    "resource",
+    "state"
+  ],
+  "scripts": {
+    "start": "rollup -c -w",
+    "build": "rollup -c",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "prepublish": "npm run build"
+  }
+}
