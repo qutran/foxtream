@@ -1,11 +1,9 @@
-# `core`
+# `@foxtream/core`
 
 > TODO: description
 
 ## Usage
 
 ```
-const core = require('core');
-
-// TODO: DEMONSTRATE API
+npm i --save @foxtream/core
 ```
