@@ -1,6 +1,6 @@
 {
   "name": "@foxtream/core",
-  "version": "0.0.2-alpha.0",
+  "version": "0.0.3-alpha.0",
   "description": "Reactive state management for js applications",
   "typings": "./dist/typings/index.d.ts",
   "main": "dist/cjs/index.js",
@@ -28,5 +28,5 @@
     "test:coverage": "jest --coverage",
     "prepublish": "npm run build"
   },
-  "gitHead": "6092462e46489ca3a6da305d451e228a929050b8"
+  "gitHead": "2056ecc64b6f2566ab6d1fdd4e14a62dc594f47c"
 }
