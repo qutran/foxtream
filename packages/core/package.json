@@ -11,6 +11,9 @@
   "homepage": "https://github.com/qutran/foxtream",
   "repository": "github:qutran/foxtream",
   "bugs": "https://github.com/qutran/foxtream/issues",
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "store",
     "reactive",
@@ -25,5 +28,5 @@
     "test:coverage": "jest --coverage",
     "prepublish": "npm run build"
   },
-  "gitHead": "dd5c77a1417ee47080eaf9893de44510c8465701"
+  "gitHead": "d53ab06f2c0bf9617fd7350ba187e7fcb5832abd"
 }
