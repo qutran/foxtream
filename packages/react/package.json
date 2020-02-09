@@ -1,6 +1,6 @@
 {
   "name": "@foxtream/react",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Reactive state management for js applications",
   "typings": "./dist/typings/index.d.ts",
   "main": "dist/cjs/index.js",
