@@ -25,8 +25,12 @@ export function useStore<T>(model: ModelType<T>) {
   return value;
 }
 
-export function useComputed<T>(fn: ModelType<T>): Computed<T> {
-  return useMemo(() => computed(fn), []);
+export function useComputed<T>(fn: () => T, deps = []): T {
+  const instance = useMemo(() => computed(fn), [deps]);
+  const [value, setValue] = useState(() => instance.getValue());
+  useEffect(() => instance.subscribe(setValue), deps);
+
+  return value;
 }
 
 export function useResource<T extends Observable<any>>(resource: Resource<T>) {
