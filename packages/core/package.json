@@ -24,5 +24,6 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "prepublish": "npm run build"
-  }
+  },
+  "gitHead": "dd5c77a1417ee47080eaf9893de44510c8465701"
 }
