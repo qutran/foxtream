@@ -14,7 +14,7 @@ function createPanel() {
 async function main() {
   port.onMessage.addListener(onMessage);
   let window = null;
-  const pool = [];
+  let pool = [];
   const panel = await createPanel();
 
   panel.onShown.addListener(_window => {
@@ -24,7 +24,10 @@ async function main() {
         window.postMessage(message, '*');
       }
     }
-    panel.onHidden.addListener(() => port.onMessage.removeListener(onMessage));
+    panel.onHidden.addListener(() => {
+      pool = [];
+      port.onMessage.removeListener(onMessage);
+    });
   });
 
   function onMessage(message) {

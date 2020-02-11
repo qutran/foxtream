@@ -10,7 +10,11 @@ function addCall({ model, method, input, output }) {
     .join(', ');
   content.querySelector('.return').innerText = JSON.stringify(output);
   container.appendChild(content);
+  container.classList.add('hidden');
   document.body.appendChild(container);
+  requestIdleCallback(() => {
+    container.classList.add('show');
+  });
 }
 
 function clear() {

@@ -1,3 +1,4 @@
+import 'https://cdnjs.cloudflare.com/ajax/libs/stacktrace.js/2.0.2/stacktrace.min.js';
 import { track, readStore } from 'https://www.unpkg.com/@foxtream/core';
 
 let waiting = false;
@@ -37,7 +38,25 @@ function serialize(obj) {
   return result;
 }
 
-track((model, method, input, output) => {
+function getFileMeta(file) {
+  if (!file) return null;
+  const { fileName, lineNumber, columnNumber } = file;
+  return { fileName, lineNumber, columnNumber };
+}
+
+async function getTriggerSource() {
+  const after = 'observableSubject.<computed>';
+  const stack = await StackTrace.get();
+  const index = stack.findIndex(
+    ({ functionName }) => functionName && functionName.indexOf(after) >= 0,
+  );
+  return index < 0 ? null : getFileMeta(stack[index + 1]);
+}
+
+track(async (model, method, input, output) => {
+  const triggerSource = await getTriggerSource();
+  console.log(triggerSource);
+
   send({
     action: 'call',
     payload: {
@@ -66,6 +85,11 @@ const user = readStore(UserModel);
 
 user.update({ name: 'Anna' });
 
+function abc() {
+  const { sayHello } = readStore(UserModel);
+  sayHello();
+}
+
 setTimeout(() => {
-  readStore(UserModel).sayHello();
+  abc();
 }, 3000);
