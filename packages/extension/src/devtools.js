@@ -12,14 +12,13 @@ function createPanel() {
 }
 
 async function main() {
+  port.onMessage.addListener(onMessage);
   let window = null;
   const pool = [];
   const panel = await createPanel();
-  port.onMessage.addListener(onMessage);
 
   panel.onShown.addListener(_window => {
     window = _window;
-    console.log(pool);
     if (pool.length) {
       for (const message of pool) {
         window.postMessage(message, '*');
