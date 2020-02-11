@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "Foxtream devtools",
+  "version": "0.0.1",
+  "devtools_page": "index.html",
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "web_accessible_resources": ["content/page.js"],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content/content.js"]
+    }
+  ],
+  "permissions": ["<all_urls>", "activeTab"]
+}
