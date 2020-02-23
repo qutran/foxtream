@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES2019",
     "declaration": true,
     "lib": ["es2017", "dom"],
     "module": "ESNext",
     "moduleResolution": "node",
     "removeComments": true,
     "downlevelIteration": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "resolveJsonModule": true
   }
 }

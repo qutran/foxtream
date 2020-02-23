@@ -1,5 +1,5 @@
 {
-  "name": "@foxtream/extension",
+  "name": "@foxtream/tools",
   "version": "0.0.9",
   "description": "Reactive state management for js applications",
   "typings": "./dist/typings/index.d.ts",
@@ -11,19 +11,33 @@
   "homepage": "https://github.com/qutran/foxtream",
   "repository": "github:qutran/foxtream",
   "bugs": "https://github.com/qutran/foxtream/issues",
-  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "store",
     "reactive",
     "computed",
     "resource",
-    "state",
-    "extension"
+    "state"
   ],
-  "scripts": {},
+  "scripts": {
+    "start": "rollup -c -w",
+    "build": "rollup -c",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "prepare": "npm run build"
+  },
   "gitHead": "2056ecc64b6f2566ab6d1fdd4e14a62dc594f47c",
+  "devDependencies": {
+    "@foxtream/core": "file:../core",
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1"
+  },
   "dependencies": {
-    "@foxtream/tools-ui": "file:../tools-ui",
-    "fs-extra": "^8.1.0"
+    "stacktrace-js": "^2.0.2"
+  },
+  "peerDependencies": {
+    "@foxtream/core": "*"
   }
 }

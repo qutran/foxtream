@@ -21,7 +21,7 @@ async function main() {
     window = _window;
     if (pool.length) {
       for (const message of pool) {
-        window.postMessage(message, '*');
+        window.postMessage(JSON.stringify(message), '*');
       }
     }
     panel.onHidden.addListener(() => {
@@ -32,7 +32,7 @@ async function main() {
 
   function onMessage(message) {
     if (window) {
-      window.postMessage(message, '*');
+      window.postMessage(JSON.stringify(message), '*');
     } else {
       pool.push(message);
     }

@@ -41,7 +41,6 @@ async function onDevtoolsConnect(port) {
   devtoolsPorts[tabId] = port;
 
   if (messages && messages.length) {
-    console.log(messages);
     port.postMessage({ action: 'batch', payload: messages });
   }
 
@@ -54,6 +53,7 @@ async function onDevtoolsConnect(port) {
 function onContentMessage(message, tabId) {
   targetPort = devtoolsPorts[tabId];
   messagePool[tabId].push(message);
+  console.log({ message, tabId });
   if (targetPort) {
     targetPort.postMessage(message);
   }

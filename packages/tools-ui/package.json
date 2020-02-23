@@ -1,0 +1,46 @@
+{
+  "name": "@foxtream/tools-ui",
+  "version": "0.0.9",
+  "description": "Reactive state management for js applications",
+  "types": "./dist/typings/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.mjs",
+  "unpkg": "dist/esm/index.mjs",
+  "license": "MIT",
+  "author": "Dmitry Kutran <kutran.dmitry@gmail.com> (https://github.com/qutran)",
+  "homepage": "https://github.com/qutran/foxtream",
+  "repository": "github:qutran/foxtream",
+  "bugs": "https://github.com/qutran/foxtream/issues",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "store",
+    "reactive",
+    "computed",
+    "resource",
+    "state"
+  ],
+  "scripts": {
+    "start": "rollup -c -w",
+    "build": "rollup -c",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "prepare": "npm run build"
+  },
+  "gitHead": "2056ecc64b6f2566ab6d1fdd4e14a62dc594f47c",
+  "devDependencies": {
+    "@rollup/plugin-json": "^4.0.2",
+    "@types/prettier": "^1.19.0",
+    "rollup": "^1.31.1",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-svelte": "^5.1.1",
+    "svelte": "^3.18.2"
+  },
+  "dependencies": {
+    "prettier": "^1.19.1",
+    "tippy.js": "^5.2.1"
+  }
+}
