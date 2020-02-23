@@ -56,7 +56,7 @@ export function createExtensionEmitter() {
 
   return {
     send<T>(message: T) {
-      if (!win.$$foxtream_send) {
+      if (win.$$foxtream_send) {
         requestIdleCallback(() => win.$$foxtream_send(message));
       } else {
         pool.push(message);

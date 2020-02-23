@@ -35,7 +35,7 @@
   }
 </style>
 
-<div transition:fly={{ y: -10 }} class="container">
+<div in:fly={{ y: -10 }} class="container">
   <span class="async" class:invisible={!isAsync}>async&nbsp;</span>
   <span class="model">{model}</span>
   <span>.</span>

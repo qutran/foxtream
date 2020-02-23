@@ -26,6 +26,7 @@ async function main() {
     }
     panel.onHidden.addListener(() => {
       pool = [];
+      window = null;
       port.onMessage.removeListener(onMessage);
     });
   });

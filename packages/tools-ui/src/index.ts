@@ -18,7 +18,7 @@ function deserializeMessage(serializedMessage: string): Message {
 }
 
 function createUI(target: HTMLElement) {
-  return new App({ target, intro: true });
+  return new App({ target });
 }
 
 function createOnMessage(ui: UI) {

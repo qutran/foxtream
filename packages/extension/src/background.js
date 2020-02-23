@@ -30,7 +30,7 @@ async function onContentConnect(port) {
 
   port.onMessage.addListener(message => onContentMessage(message, tabId));
   port.onDisconnect.addListener(() => {
-    onContentMessage({ action: 'clear' }, tabId);
+    onContentMessage({ type: 'clearCalls' }, tabId);
     delete messagePool[tabId];
   });
 }
@@ -41,7 +41,7 @@ async function onDevtoolsConnect(port) {
   devtoolsPorts[tabId] = port;
 
   if (messages && messages.length) {
-    port.postMessage({ action: 'batch', payload: messages });
+    port.postMessage({ type: 'batch', payload: messages });
   }
 
   port.onMessage.addListener(onDevtoolsMessage);
@@ -53,7 +53,6 @@ async function onDevtoolsConnect(port) {
 function onContentMessage(message, tabId) {
   targetPort = devtoolsPorts[tabId];
   messagePool[tabId].push(message);
-  console.log({ message, tabId });
   if (targetPort) {
     targetPort.postMessage(message);
   }
